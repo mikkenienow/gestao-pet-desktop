@@ -1,0 +1,558 @@
+package gestaopet.view.pet;
+
+import gestaopet.components.ImageStore;
+import gestaopet.DB.PetDB;
+import gestaopet.V;
+import gestaopet.classes.DateTools;
+import gestaopet.classes.FunctionButton;
+import gestaopet.classes.GlobalPanel;
+import gestaopet.classes.Pet;
+import gestaopet.enums.DateMethods;
+import gestaopet.tema.ComboBox.ComboBox;
+import gestaopet.tema.scroll.SpecialScroll;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.ImageIcon;
+
+public class ListarPet extends GlobalPanel {
+    private FunctionButton[] bList;
+    private String param;
+    private List<Pet> petList = new ArrayList<Pet>();
+    private SpecialScroll ss;
+    ComboBox cb1;
+    
+    public ListarPet(int param) {
+        initComponents();
+        ss = new SpecialScroll(petPanel);
+        add(ss);
+        ss.setAdjust(15, 85);
+        ComboBox.setTheme(cb1, tamanho, new int[] {360,0}, 40,1, jPanel4);
+        this.param = param + "";
+        FunctionButton[] fb =  {
+            new FunctionButton("", true,"novo1.png", this.param),
+            //new FunctionButton("Editar", false,"icons8_edit_property_35px.png", this.param),
+            //new FunctionButton("Agendar", false,"icons8_schedule_35px.png", this.param),
+            new FunctionButton("Voltar", true,"icons8_left_2_35px.png", this.param),
+        };
+
+        buttonsInit( fb );
+        loadPetList("","");
+        
+    }
+    
+    public void onLoad(String filter, String idDono){
+        petList = filter(filter, idDono);
+        //loadPetList("","");
+    }
+    
+    public List<Pet> filter(String filter, String idDono){
+        List<Pet> output = new ArrayList<Pet>();
+        for(Pet p : PetDB.getAll()){
+            String n = p.getNome();
+            int i = p.getDonoId();
+            String f = (filter.isEmpty())? n: filter;
+            int id = (idDono.isEmpty())? i: Integer.parseInt(idDono);
+            if(i == id && (n.indexOf(f) > -1)){
+                output.add(p);
+            }
+        }
+        return output;
+    }
+    
+    
+    @Override
+    public void action(ActionEvent evt){
+        switch(evt.getActionCommand()){
+            case "b1" :
+                V.petReg.clearAll();
+                V.nav.setView(2);
+                break;
+            case "b2" :
+                V.nav.back();
+                break;
+        }
+    }
+    
+    public void loadPet(Pet pet){
+        V.petReg.loadPet(pet);
+        V.nav.setView(2);
+        V.nav.buttonEnableUpdate(new boolean[] {true, true, true, true, true});
+    }
+    
+    public void loadPetList(String text, String idDono){
+        onLoad(text, idDono);
+        panel.removeAll();
+        String size = tamanho.getSelectedItem().toString();
+        int y = 0;
+        for(int i = 0; i < petList.size(); i++){
+            String n = petList.get(i).getNome() + petList.get(i).getDonoId();
+            String s = petList.get(i).getPorte()+"";
+            int dId = petList.get(i).getDonoId();
+            if(text.equals("") || n.toLowerCase().indexOf(text.toLowerCase()) > -1){
+                if(size.equals("Todos") || s.toLowerCase().indexOf(size.toLowerCase()) > -1){
+                    if(idDono.equals("") || dId == Integer.parseInt(idDono)){
+                        ItemList pf = new ItemList(petList.get(i));
+                        panel.add(pf);
+                        pf.setVisible(true);
+                        pf.setLocation(0, y);
+                        y = y + 42;
+
+                        pf.setPreferredSize(new Dimension(940,42));
+                        pf.setSize(new Dimension(940,42));
+                        panel.setPreferredSize(new Dimension(940,y));
+                        panel.setSize(new Dimension(940,y));
+                    }
+                }
+            }
+        }
+        ss.updateSize();
+        panel.repaint();
+        panel.revalidate();
+    }
+    
+    public void petPreview(Pet pet){
+        nomePet.setText(pet.getNome());
+        donoNome.setText(pet.getDonoNome());
+        racaPet.setText(pet.getRaca());
+        portePet.setText(pet.getPorte()+"");
+        ImageStore is = new ImageStore();
+        is.openFoto(pet.getFoto(), fotoPet);
+        int y = DateTools.yearsBetween(pet.getNascimento(), DateTools.getDate(DateMethods.TODAY, 0, 0, 0), true);
+        idadePet.setText((y > 1)? y + " Anos" : "Menos de 1 ano");
+        
+        if(pet.getGenero().equals("m")){
+            generoPet.setIcon(new ImageIcon(getClass().getResource("/gestaopet/icons/icons8_male_35px.png")));
+        } else {
+            generoPet.setIcon(new ImageIcon(getClass().getResource("/gestaopet/icons/icons8_female_35px.png")));
+        }
+    }
+    
+
+    
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        fotoPet = new javax.swing.JLabel();
+        idadePet = new javax.swing.JLabel();
+        nomePet = new javax.swing.JLabel();
+        donoNome = new javax.swing.JLabel();
+        racaPet = new javax.swing.JLabel();
+        portePet = new javax.swing.JLabel();
+        nomePet1 = new javax.swing.JLabel();
+        donoNome1 = new javax.swing.JLabel();
+        racaPet1 = new javax.swing.JLabel();
+        portePet1 = new javax.swing.JLabel();
+        idadePet1 = new javax.swing.JLabel();
+        generoPet = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        donoLabel = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        nomeLabel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        porteLabel = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        acoesLabel = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        target = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        searchBar = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        tamanho = new javax.swing.JComboBox<>();
+        jPanel3 = new javax.swing.JPanel();
+        petPanel = new javax.swing.JScrollPane();
+        panel = new javax.swing.JPanel();
+        shadow = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setName("1"); // NOI18N
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(15, 59, 146), 2));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestaopet/tema/icons/PetImg 250.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 8, 240, 210));
+
+        fotoPet.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        fotoPet.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        fotoPet.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        fotoPet.setMaximumSize(new java.awt.Dimension(200, 200));
+        fotoPet.setMinimumSize(new java.awt.Dimension(200, 200));
+        fotoPet.setPreferredSize(new java.awt.Dimension(200, 200));
+        jPanel1.add(fotoPet, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 190));
+
+        idadePet.setText(" ");
+        jPanel1.add(idadePet, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 170, -1));
+
+        nomePet.setText(" ");
+        jPanel1.add(nomePet, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 170, -1));
+
+        donoNome.setText(" ");
+        jPanel1.add(donoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 170, -1));
+
+        racaPet.setText(" ");
+        jPanel1.add(racaPet, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 170, -1));
+
+        portePet.setText(" ");
+        jPanel1.add(portePet, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 170, -1));
+
+        nomePet1.setText("Nome");
+        jPanel1.add(nomePet1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 70, -1));
+
+        donoNome1.setText("Dono");
+        jPanel1.add(donoNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 70, -1));
+
+        racaPet1.setText("Raça");
+        jPanel1.add(racaPet1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 70, -1));
+
+        portePet1.setText("Porte");
+        jPanel1.add(portePet1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 70, -1));
+
+        idadePet1.setText("Idade");
+        jPanel1.add(idadePet1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 70, -1));
+
+        generoPet.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        generoPet.setText(" ");
+        generoPet.setToolTipText("");
+        jPanel1.add(generoPet, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 30, -1));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestaopet/tema/icons/petSilhouette.png"))); // NOI18N
+        jLabel10.setText("jLabel10");
+        jLabel10.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 100, 140));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        donoLabel.setBackground(new java.awt.Color(255, 255, 255));
+        donoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                donoLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                donoLabelMouseExited(evt);
+            }
+        });
+        donoLabel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(15, 59, 146));
+        jLabel5.setText("Dono do pet");
+        donoLabel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 20));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestaopet/icons/angryimg.png"))); // NOI18N
+        jLabel7.setText("jLabel1");
+        donoLabel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 2, -1));
+
+        jPanel2.add(donoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 0, 170, 30));
+
+        nomeLabel.setBackground(new java.awt.Color(255, 255, 255));
+        nomeLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                nomeLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                nomeLabelMouseExited(evt);
+            }
+        });
+        nomeLabel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestaopet/icons/angryimg.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        nomeLabel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, 2, -1));
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(15, 59, 146));
+        jLabel3.setText("Nome do pet");
+        nomeLabel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 20));
+
+        jPanel2.add(nomeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 175, 30));
+
+        porteLabel.setBackground(new java.awt.Color(255, 255, 255));
+        porteLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                porteLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                porteLabelMouseExited(evt);
+            }
+        });
+        porteLabel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(15, 59, 146));
+        jLabel6.setText("Porte");
+        porteLabel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 20));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestaopet/icons/angryimg.png"))); // NOI18N
+        jLabel8.setText("jLabel1");
+        porteLabel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 2, -1));
+
+        jPanel2.add(porteLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 0, 190, 30));
+
+        acoesLabel.setBackground(new java.awt.Color(255, 255, 255));
+        acoesLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                acoesLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                acoesLabelMouseExited(evt);
+            }
+        });
+        acoesLabel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestaopet/icons/angryimg.png"))); // NOI18N
+        jLabel9.setText("jLabel1");
+        acoesLabel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 2, -1));
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(15, 59, 146));
+        jLabel4.setText("Ações");
+        acoesLabel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 20));
+
+        jPanel2.add(acoesLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 0, 230, 30));
+
+        target.setBackground(new java.awt.Color(204, 255, 204));
+        target.setOpaque(false);
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestaopet/tema/icons/buscar0.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setFocusPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 50, -1));
+
+        searchBar.setBorder(null);
+        jPanel5.add(searchBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 5, 230, 30));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestaopet/tema/icons/Box.png"))); // NOI18N
+        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, -1));
+
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestaopet/tema/icons/Box.png"))); // NOI18N
+        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 170, -1));
+
+        javax.swing.GroupLayout targetLayout = new javax.swing.GroupLayout(target);
+        target.setLayout(targetLayout);
+        targetLayout.setHorizontalGroup(
+            targetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        targetLayout.setVerticalGroup(
+            targetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(targetLayout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jPanel4.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel4.setOpaque(false);
+
+        tamanho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Grande", "Pequeno" }));
+        tamanho.setName("tamanho"); // NOI18N
+        tamanho.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                tamanhoItemStateChanged(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(tamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(tamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel3.setOpaque(false);
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        petPanel.setBorder(null);
+        petPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        petPanel.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        petPanel.setOpaque(false);
+        petPanel.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
+            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
+                petPanelMouseWheelMoved(evt);
+            }
+        });
+
+        panel.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
+        panel.setLayout(panelLayout);
+        panelLayout.setHorizontalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 954, Short.MAX_VALUE)
+        );
+        panelLayout.setVerticalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 438, Short.MAX_VALUE)
+        );
+
+        petPanel.setViewportView(panel);
+
+        jPanel3.add(petPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 392));
+
+        shadow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestaopet/tema/icons/shadow4.png"))); // NOI18N
+        jPanel3.add(shadow, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 870, 40));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 873, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 814, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(382, 382, 382)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(target, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(576, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(target, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36))
+        );
+
+        getAccessibleContext().setAccessibleParent(this);
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        loadPetList(searchBar.getText(),"");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tamanhoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_tamanhoItemStateChanged
+        loadPetList(searchBar.getText(),"");
+    }//GEN-LAST:event_tamanhoItemStateChanged
+
+    private void nomeLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nomeLabelMouseEntered
+        nomeLabel.setBackground(new Color(204,204,255));
+    }//GEN-LAST:event_nomeLabelMouseEntered
+
+    private void nomeLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nomeLabelMouseExited
+        nomeLabel.setBackground(Color.WHITE);
+    }//GEN-LAST:event_nomeLabelMouseExited
+
+    private void donoLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_donoLabelMouseEntered
+        donoLabel.setBackground(new Color(204,204,255));
+    }//GEN-LAST:event_donoLabelMouseEntered
+
+    private void donoLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_donoLabelMouseExited
+        donoLabel.setBackground(Color.WHITE);
+    }//GEN-LAST:event_donoLabelMouseExited
+
+    private void porteLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_porteLabelMouseEntered
+        porteLabel.setBackground(new Color(204,204,255));
+    }//GEN-LAST:event_porteLabelMouseEntered
+
+    private void porteLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_porteLabelMouseExited
+        porteLabel.setBackground(Color.WHITE);
+    }//GEN-LAST:event_porteLabelMouseExited
+
+    private void acoesLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acoesLabelMouseEntered
+        acoesLabel.setBackground(new Color(204,204,255));
+    }//GEN-LAST:event_acoesLabelMouseEntered
+
+    private void acoesLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acoesLabelMouseExited
+        acoesLabel.setBackground(Color.WHITE);
+    }//GEN-LAST:event_acoesLabelMouseExited
+
+    private void petPanelMouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_petPanelMouseWheelMoved
+        ss.scroolAction(petPanel.getVerticalScrollBar().getValue());
+    }//GEN-LAST:event_petPanelMouseWheelMoved
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel acoesLabel;
+    private javax.swing.JPanel donoLabel;
+    private javax.swing.JLabel donoNome;
+    private javax.swing.JLabel donoNome1;
+    private javax.swing.JLabel fotoPet;
+    private javax.swing.JLabel generoPet;
+    private javax.swing.JLabel idadePet;
+    private javax.swing.JLabel idadePet1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel nomeLabel;
+    private javax.swing.JLabel nomePet;
+    private javax.swing.JLabel nomePet1;
+    private javax.swing.JPanel panel;
+    private javax.swing.JScrollPane petPanel;
+    private javax.swing.JPanel porteLabel;
+    private javax.swing.JLabel portePet;
+    private javax.swing.JLabel portePet1;
+    private javax.swing.JLabel racaPet;
+    private javax.swing.JLabel racaPet1;
+    private javax.swing.JTextField searchBar;
+    private javax.swing.JLabel shadow;
+    private javax.swing.JComboBox<String> tamanho;
+    private javax.swing.JPanel target;
+    // End of variables declaration//GEN-END:variables
+}
