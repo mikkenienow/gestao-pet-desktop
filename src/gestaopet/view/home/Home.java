@@ -176,7 +176,7 @@ public class Home extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bichofeliz/tema/icons/Botao.png"))); // NOI18N
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestaopet/tema/icons/Botao.png"))); // NOI18N
         back.setBorder(null);
         back.setBorderPainted(false);
         back.setContentAreaFilled(false);
@@ -195,13 +195,13 @@ public class Home extends javax.swing.JFrame {
         getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, 40, 40));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bichofeliz/tema/icons/OrnamentoBottonLeft.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestaopet/tema/icons/OrnamentoBottonLeft.png"))); // NOI18N
         jLabel2.setText("jLabel2");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 210, 250));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bichofeliz/tema/icons/OrnamentoTopRight.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestaopet/tema/icons/OrnamentoTopRight.png"))); // NOI18N
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 0, 160, 210));
 
@@ -241,7 +241,7 @@ public class Home extends javax.swing.JFrame {
         buttonsPanel.setMinimumSize(new java.awt.Dimension(535, 72));
         buttonsPanel.setPreferredSize(new java.awt.Dimension(535, 72));
 
-        b1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bichofeliz/icons/icons8_wait_35px.png"))); // NOI18N
+        b1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestaopet/icons/icons8_wait_35px.png"))); // NOI18N
         b1.setToolTipText("");
         b1.setBorderPainted(false);
         b1.setContentAreaFilled(false);
@@ -256,7 +256,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        b2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bichofeliz/icons/icons8_wait_35px.png"))); // NOI18N
+        b2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestaopet/icons/icons8_wait_35px.png"))); // NOI18N
         b2.setToolTipText("");
         b2.setBorderPainted(false);
         b2.setContentAreaFilled(false);
@@ -271,7 +271,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        b3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bichofeliz/icons/icons8_wait_35px.png"))); // NOI18N
+        b3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestaopet/icons/icons8_wait_35px.png"))); // NOI18N
         b3.setToolTipText("");
         b3.setBorderPainted(false);
         b3.setContentAreaFilled(false);
@@ -286,7 +286,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        b4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bichofeliz/icons/icons8_wait_35px.png"))); // NOI18N
+        b4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestaopet/icons/icons8_wait_35px.png"))); // NOI18N
         b4.setToolTipText("");
         b4.setBorderPainted(false);
         b4.setContentAreaFilled(false);
@@ -301,7 +301,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        b5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bichofeliz/icons/icons8_wait_35px.png"))); // NOI18N
+        b5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestaopet/icons/icons8_wait_35px.png"))); // NOI18N
         b5.setToolTipText("");
         b5.setBorderPainted(false);
         b5.setContentAreaFilled(false);
@@ -316,7 +316,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        b6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bichofeliz/icons/icons8_wait_35px.png"))); // NOI18N
+        b6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestaopet/icons/icons8_wait_35px.png"))); // NOI18N
         b6.setToolTipText("");
         b6.setBorderPainted(false);
         b6.setContentAreaFilled(false);
@@ -331,7 +331,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        b7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bichofeliz/icons/icons8_wait_35px.png"))); // NOI18N
+        b7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestaopet/icons/icons8_wait_35px.png"))); // NOI18N
         b7.setToolTipText("");
         b7.setBorderPainted(false);
         b7.setContentAreaFilled(false);
@@ -346,7 +346,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        b8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bichofeliz/icons/icons8_wait_35px.png"))); // NOI18N
+        b8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestaopet/icons/icons8_wait_35px.png"))); // NOI18N
         b8.setToolTipText("");
         b8.setBorderPainted(false);
         b8.setContentAreaFilled(false);
