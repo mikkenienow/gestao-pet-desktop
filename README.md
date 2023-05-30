@@ -1,11 +1,22 @@
+<style>
+  td, th {
+  border: none!important;
+}
+</style>
+
+
 # Gestão Pet
 > O Gestão Pet é um projeto desenvolvido em Java para uso local, que possui um banco de dados em SQLite. O sistema tem como objetivo facilitar a gestão de estabelecimentos relacionados a cuidados de animais de estimação, como pet shops, clínicas veterinárias, entre outros. Ele permite o cadastro e controle de Pets, clientes, fornecedores e funcionários, além de oferecer funcionalidades de controle de estoque e controle financeiro.
 
 ## Funcionalidades
 ### Cadastro de Pets: 
-> Permite cadastrar e gerenciar informações sobre animais de estimação, como nome, raça, idade, histórico médico, entre outros.
 
-![alt text](https://github.com/mikkenienow/gestao-pet-desktop/blob/main/images/GestaoPet%20(1).png)
+|   |  |
+| :-- | --: |
+|Permite cadastrar e gerenciar informações sobre animais de estimação, como nome, raça, idade, histórico médico, entre outros. </br></br></br></br></br></br></br></br>|<img src="https://github.com/mikkenienow/gestao-pet-desktop/blob/main/images/GestaoPet%20(6).png" width="500" title=""></br><p align="center">Clique para ampliar<p>|
+
+
+
 
 ### Cadastro de clientes: 
 > Permite cadastrar e gerenciar informações sobre os clientes, incluindo nome, endereço, contato, e outros dados relevantes.
