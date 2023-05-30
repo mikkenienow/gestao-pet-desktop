@@ -21,35 +21,35 @@ O Gestão Pet é um projeto desenvolvido em Java para uso local, que possui um b
 
 > ### Cadastro de fornecedores
 > Permite cadastrar e gerenciar informações sobre os fornecedores, como nome, contato, produtos fornecidos, entre outros. </br>
-> <img src="https://github.com/mikkenienow/gestao-pet-desktop/blob/main/images/GestaoPet%20(6).png" width="500px" title="">
+> <img src="https://github.com/mikkenienow/gestao-pet-desktop/blob/main/images/GestaoPet%20(8).png" width="500px" title="">
 > <p align="left"> Clique para ampliar<p>
 </br>
 </br>
 
 > ### Cadastro de funcionários
 > Permite cadastrar e gerenciar informações sobre os funcionários do estabelecimento, como nome, cargo, horário de trabalho, entre outros. </br>
-> <img src="https://github.com/mikkenienow/gestao-pet-desktop/blob/main/images/GestaoPet%20(6).png" width="500px" title="">
+> <img src="https://github.com/mikkenienow/gestao-pet-desktop/blob/main/images/GestaoPet%20(8).png" width="500px" title="">
 > <p align="left"> Clique para ampliar<p>
 </br>
 </br>
 
 > ### Controle de estoque
 > Permite o registro de todo o material em estoque, possibilitando o controle de entrada e saída desses itens. É possível atualizar o estoque conforme ocorrem transações, garantindo o controle preciso dos produtos disponíveis. </br>
-> <img src="https://github.com/mikkenienow/gestao-pet-desktop/blob/main/images/GestaoPet%20(6).png" width="500px" title="">
+> <img src="https://github.com/mikkenienow/gestao-pet-desktop/blob/main/images/GestaoPet%20(9).png" width="500px" title="">
 > <p align="left"> Clique para ampliar<p>
 </br>
 </br>
 
 > ### Controle financeiro
 > Permite registrar as entradas e saídas financeiras relacionadas aos serviços prestados, bem como aos itens de estoque adquiridos. Além disso, é possível realizar lançamentos avulsos de entradas e saídas que não estão diretamente vinculados ao sistema. </br>
-> <img src="https://github.com/mikkenienow/gestao-pet-desktop/blob/main/images/GestaoPet%20(6).png" width="500px" title="">
+> <img src="https://github.com/mikkenienow/gestao-pet-desktop/blob/main/images/GestaoPet%20(11).png" width="500px" title="">
 > <p align="left"> Clique para ampliar<p>
 </br>
 </br>
 
 > ### Serviços para Pets
 > O Gestão Pet oferece quatro serviços relacionados aos Pets: creche, banho, banho & tosa, e hospedagem. Esses serviços permitem atender às diferentes necessidades dos clientes. </br>
-> <img src="https://github.com/mikkenienow/gestao-pet-desktop/blob/main/images/GestaoPet%20(6).png" width="500px" title="">
+> <img src="https://github.com/mikkenienow/gestao-pet-desktop/blob/main/images/GestaoPet%20(5).png" width="500px" title="">
 > <p align="left"> Clique para ampliar<p>
 </br>
 </br>
@@ -61,6 +61,11 @@ O Gestão Pet é um projeto desenvolvido em Java para uso local, que possui um b
 </br>
 </br>
 
+## Todas as [imagens](https://github.com/mikkenienow/gestao-pet-desktop/tree/main/images).
+
 ## Pré-requisitos
 > Antes de executar o Gestão Pet, certifique-se de ter os seguintes requisitos instalados em seu ambiente de desenvolvimento:
->Java Development Kit (JDK): versão 20 ou superior
+> </br></br>
+> **Java Development Kit (JDK)**: versão 20 ou superior </br>
+> **SQLLiteStudio**: versão 3.4.1 ou superior </br>
+> **Apache NetBeans IDE**: versão 16 ou superior
