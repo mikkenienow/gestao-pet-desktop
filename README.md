@@ -1,3 +1,4 @@
+![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=Desenvolvido&color=GREEN&style=for-the-badge)
 # Gestão Pet
 O Gestão Pet é um projeto desenvolvido em Java para uso local, que possui um banco de dados em SQLite. O sistema tem como objetivo facilitar a gestão de estabelecimentos relacionados a cuidados de animais de estimação, como pet shops, clínicas veterinárias, entre outros. Ele permite o cadastro e controle de Pets, clientes, fornecedores e funcionários, além de oferecer funcionalidades de controle de estoque e controle financeiro.
 
