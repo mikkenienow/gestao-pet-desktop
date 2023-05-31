@@ -69,3 +69,6 @@ O Gestão Pet é um projeto desenvolvido em Java para uso local, que possui um b
 > **Java Development Kit (JDK)**: versão 20 ou superior </br>
 > **SQLLiteStudio**: versão 3.4.1 ou superior </br>
 > **Apache NetBeans IDE**: versão 16 ou superior
+
+Backend e levantamentos: Mikke Nienow
+UX/UI Design: Nicolas Ceruti
