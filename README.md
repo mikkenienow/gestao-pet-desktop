@@ -66,9 +66,9 @@ O Gestão Pet é um projeto desenvolvido em Java para uso local, que possui um b
 ## Pré-requisitos
 > Antes de executar o Gestão Pet, certifique-se de ter os seguintes requisitos instalados em seu ambiente de desenvolvimento:
 > </br></br>
-> **Java Development Kit (JDK)**: versão 20 ou superior </br>
-> **SQLLiteStudio**: versão 3.4.1 ou superior </br>
-> **Apache NetBeans IDE**: versão 16 ou superior
+> Java Development Kit (JDK): **versão 20 ou superior** </br>
+> SQLLiteStudio: **versão 3.4.1 ou superior** </br>
+> Apache NetBeans IDE: **versão 16 ou superior**</br></br>
 
-Backend e levantamentos: Mikke Nienow
-UX/UI Design: Nicolas Ceruti
+> Backend e levantamentos: **Mikke Nienow**
+> UX/UI Design: **Nicolas Ceruti**
