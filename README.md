@@ -61,14 +61,15 @@ O Gestão Pet é um projeto desenvolvido em Java para uso local, que possui um b
 </br>
 </br>
 
-## Todas as [imagens](https://github.com/mikkenienow/gestao-pet-desktop/tree/main/images).
+> ## Todas as [imagens](https://github.com/mikkenienow/gestao-pet-desktop/tree/main/images).
 
-## Pré-requisitos
+> ## Pré-requisitos
 > Antes de executar o Gestão Pet, certifique-se de ter os seguintes requisitos instalados em seu ambiente de desenvolvimento:
 > </br></br>
 > Java Development Kit (JDK): **versão 20 ou superior** </br>
 > SQLLiteStudio: **versão 3.4.1 ou superior** </br>
 > Apache NetBeans IDE: **versão 16 ou superior**</br></br>
 
-> Backend e levantamentos: **Mikke Nienow**
+> ## Desenvolvimento </br>
+> Levantamento & Backend: **Mikke Nienow** </br>
 > UX/UI Design: **Nicolas Ceruti**
